@@ -1,0 +1,46 @@
+body,html {
+ margin: 0;
+ padding: 0;
+ background-color: #fdf6e3;
+}
+
+header{
+    font-family: "Blippo", "Jokerman" , fantasy, sans-serif;
+    font-size: large;
+    text-align: center;
+}
+
+.flexbox{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    background-color: white;
+    justify-content: space-between;
+}
+
+.box{
+    border-color: black;
+    width: 17.5vw;
+    background-color: #fff8dc;
+    border-style: solid;
+    border-collapse: collapse;
+    border-radius: 1.5vh;
+    height: 20vh;
+    margin: 0 0 2vh 0;
+}
+
+.box:hover{
+    transform: scale(1.05);
+    box-shadow: 0 1vh 1.75vh rgb(12, 12, 12);
+}
+
+#imageOverlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
