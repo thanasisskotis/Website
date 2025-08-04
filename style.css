@@ -1,37 +1,46 @@
-body,html {
- margin: 0;
- padding: 0;
- background-color: #fdf6e3;
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: #fdf6e3;
 }
 
-header{
-    font-family: "Blippo", "Jokerman" , fantasy, sans-serif;
-    font-size: large;
-    text-align: center;
+header {
+  font-family: "Blippo", "Jokerman", fantasy, sans-serif;
+  font-size: large;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-.flexbox{
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 100%;
-    background-color: white;
-    justify-content: space-between;
+.flexbox {
+  display: flex;
+  max-width: 100%;
+  background-color: white;
+  justify-content: start;
+  padding: 4rem;
+  gap: 3vw;
+  overflow: "hidden";
 }
 
-.box{
-    border-color: black;
-    width: 17.5vw;
+.box {
+    position: relative;
+    border: 1px solid black;
+    width: 18.5vw;
     background-color: #fff8dc;
-    border-style: solid;
-    border-collapse: collapse;
     border-radius: 1.5vh;
-    height: 20vh;
-    margin: 0 0 2vh 0;
+    height: 60vh;
+    margin-bottom: 2vh;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0s ease, box-shadow 0.2s ease;
+    transform: translateX(0);
 }
 
-.box:hover{
-    transform: scale(1.05);
-    box-shadow: 0 1vh 1.75vh rgb(12, 12, 12);
+.box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 1vh 1.75vh rgb(12, 12, 12);
 }
 
 #imageOverlay {
@@ -43,4 +52,15 @@ header{
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+#gallery {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.form-container{
+    display: none;
 }
