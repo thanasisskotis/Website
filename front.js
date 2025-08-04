@@ -150,14 +150,14 @@ function uploadImages() {
     const gallery = document.getElementById("gallery");
 
     let uploadCount = 0;
-    /*
+    
     for (let i = 0; i < files.length; i++) {
         const formData = new FormData();
         formData.append("image", files[i]);
         formData.append("boxId", selectedBoxId);
         formData.append("date", dateInput);  // ⬅️ Attach selected date
 
-        fetch("http://localhost:3000/upload", {
+        fetch("https://your-backend-name.onrender.com/upload", {
             method: "POST",
             body: formData,
         })
@@ -176,14 +176,14 @@ function uploadImages() {
 
                 if (uploadCount === files.length) {
                     alert("All images uploaded!");
-                }*/
+                }
 
-            /*})
+            })
             .catch((err) => {
                 alert("Upload error: " + err.message);
             });
     
-    }*/
+    }
     if(true){
         // Optional: Dynamically create a box (if you're not selecting from existing)
                 const container = document.getElementById("container");
@@ -218,7 +218,7 @@ function uploadImages() {
 
 // Fetch and show images for a given box id
 function loadImages(boxId) {
-    fetch(`http://localhost:3000/images/${boxId}`)
+    fetch(`https://your-backend-name.onrender.com/images/${boxId}`)
         .then((res) => res.json())
         .then((data) => {
         if (!Array.isArray(data)) {
