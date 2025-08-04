@@ -56,6 +56,8 @@ function giveBoxId() {
     const uploadForm = document.getElementById('upload');
     if (uploadForm) {
         uploadForm.style.display = 'flex';
+        uploadForm.style.position = 'fixed';
+        uploadForm.style.bottom = '40%';
         uploadForm.style.flexDirection = 'column';
         uploadForm.style.alignItems = 'center';
         uploadForm.style.gap = '1rem';
