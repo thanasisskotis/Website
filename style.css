@@ -2,6 +2,8 @@ body, html {
   margin: 0;
   padding: 0;
   background-color: #fdf6e3;
+  /* ❌ Remove overflow-x: hidden to avoid cutting flex scrolling */
+  /* overflow-x: hidden; --> removed */
 }
 
 header {
@@ -16,25 +18,35 @@ header {
   max-width: 100%;
   background-color: white;
   justify-content: start;
+  overflow-x: auto;
   padding: 4rem;
+  padding-right: 6rem; /* ✅ Extra space after last item */
   gap: 3vw;
+  box-sizing: border-box;
+
+  /* ✅ Hide scrollbar across browsers */
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE/Edge */
+}
+.flexbox::-webkit-scrollbar {
+  display: none;                  /* Chrome/Safari */
 }
 
 .box {
-    position: relative;
-    border: 1px solid black;
-    width: 18.5vw;
-    background-color: #fff8dc;
-    border-radius: 1.5vh;
-    height: 60vh;
-    margin-bottom: 2vh;
-    display: flex;
-    flex-shrink: 0;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0s ease, box-shadow 0.2s ease;
-    transform: translateX(0);
+  position: relative;
+  border: 1px solid black;
+  width: 18.5vw;
+  background-color: #fff8dc;
+  border-radius: 1.5vh;
+  height: 60vh;
+  margin-bottom: 2vh;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0s ease, box-shadow 0.2s ease;
+  transform: translateX(0);
 }
 
 .box:hover {
@@ -60,7 +72,6 @@ header {
   justify-content: flex-start;
 }
 
-.form-container{
-    display: none;
+.form-container {
+  display: none;
 }
-
