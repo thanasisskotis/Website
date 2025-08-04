@@ -159,7 +159,7 @@ function uploadImages() {
         formData.append("boxId", selectedBoxId);
         formData.append("date", dateInput);  // ⬅️ Attach selected date
 
-        fetch("https://your-backend-name.onrender.com/upload", {
+        fetch("https://backend-afc4.onrender.com/upload", {
             method: "POST",
             body: formData,
         })
@@ -241,3 +241,4 @@ function loadImages(boxId) {
         })
         .catch(console.error);
 }
+
