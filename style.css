@@ -18,7 +18,6 @@ header {
   justify-content: start;
   padding: 4rem;
   gap: 3vw;
-  overflow: "hidden";
 }
 
 .box {
@@ -64,3 +63,4 @@ header {
 .form-container{
     display: none;
 }
+
