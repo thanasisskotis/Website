@@ -226,23 +226,31 @@ function loadImages(boxId) {
     fetch(`https://backend-afc4.onrender.com/images/${boxId}`)
         .then((res) => res.json())
         .then((data) => {
-        if (!Array.isArray(data)) {
+          if (!data.success || !Array.isArray(data.images)) {
             alert("Failed to load images");
             return;
-        }
-        const gallery = document.getElementById("gallery");
-        gallery.innerHTML = ""; // Clear existing
-
-        document
-        data.forEach((img) => {
+          }
+        
+          const gallery = document.getElementById("gallery");
+          gallery.innerHTML = "";
+        
+          data.images.forEach((img) => {
             const imageElem = document.createElement("img");
             imageElem.src = img.url;
             imageElem.style.width = "150px";
             imageElem.style.margin = "5px";
             gallery.appendChild(imageElem);
-        });
+          });
         })
-        .catch(console.error);
+        .catch((err) => {
+          console.error("❌ Upload error:", err);
+          alert("Upload error: " + err.message);
+        });
+        console.log("📤 Uploading images...");
+        console.log("Selected boxId:", selectedBoxId);
+        console.log("Date input:", dateInput);
+        console.log("Number of files:", files.length);
 }
+
 
 
