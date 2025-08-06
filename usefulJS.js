@@ -228,31 +228,30 @@ function loadImages(boxId) {
     fetch(`https://backend-afc4.onrender.com/images/${boxId}`)
         .then((res) => res.json())
         .then((data) => {
-          if (!data.success || !Array.isArray(data.images)) {
-            alert("Failed to load images");
-            return;
-          }
-        
-          const gallery = document.getElementById("gallery");
-          gallery.innerHTML = "";
-        
-          data.images.forEach((img) => {
-            const imageElem = document.createElement("img");
-            imageElem.src = img.url;
-            imageElem.style.width = "150px";
-            imageElem.style.margin = "5px";
-            gallery.appendChild(imageElem);
-          });
+            if (!data.success || !Array.isArray(data.images)) {
+                alert("Failed to load images");
+                return;
+            }
+
+            const gallery = document.getElementById("gallery");
+            gallery.innerHTML = "";
+
+            data.images.forEach((img) => {
+                const imageElem = document.createElement("img");
+                imageElem.src = img.url;
+                imageElem.style.width = "150px";
+                imageElem.style.margin = "5px";
+                gallery.appendChild(imageElem);
+            });
+
+            console.log(`📥 Loaded ${data.images.length} images for box ${boxId}`);
         })
         .catch((err) => {
-          console.error("❌ Upload error:", err);
-          alert("Upload error: " + err.message);
+            console.error("❌ Failed to load images:", err);
+            alert("Upload error: " + err.message);
         });
-        console.log("📤 Uploading images...");
-        console.log("Selected boxId:", selectedBoxId);
-        console.log("Date input:", dateInput);
-        console.log("Number of files:", files.length);
 }
+
 
 
 
