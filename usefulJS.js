@@ -185,8 +185,10 @@ function uploadImages() {
 
             })
             .catch((err) => {
-                alert("Upload error: " + err.message);
+                console.error("❌ Upload error:", err);
+                alert("Upload failed. Check the console for details.");
             });
+
     
     }
     if(uploadSuccessful){
@@ -251,6 +253,7 @@ function loadImages(boxId) {
         console.log("Date input:", dateInput);
         console.log("Number of files:", files.length);
 }
+
 
 
 
