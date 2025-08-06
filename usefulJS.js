@@ -223,7 +223,7 @@ function uploadImages() {
 
 // Fetch and show images for a given box id
 function loadImages(boxId) {
-    fetch(`https://your-backend-name.onrender.com/images/${boxId}`)
+    fetch(`https://backend-afc4.onrender.com/images/${boxId}`)
         .then((res) => res.json())
         .then((data) => {
         if (!Array.isArray(data)) {
@@ -244,4 +244,5 @@ function loadImages(boxId) {
         })
         .catch(console.error);
 }
+
 
