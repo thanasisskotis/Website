@@ -2,6 +2,7 @@ let boxCounter = 1;  // To assign unique IDs to new boxes
 let selectedBoxId = boxCounter; // Which box is active (to upload/fetch images)
 let dragged = false;
 var disallowDrag = false; 
+let uploadSuccessful = false;
 const formContainer = document.querySelector('.form-container');
 
 
@@ -130,6 +131,7 @@ function hideOverlay() {
 // Upload images from input to the selected box
 function uploadImages() {
 
+    uploadSuccessful = true;
     disallowDrag = false;
     const files = document.getElementById("fileInput").files;
     const dateInput = document.getElementById("dateInput").value;
@@ -159,7 +161,7 @@ function uploadImages() {
         formData.append("boxId", selectedBoxId);
         formData.append("date", dateInput);  // ⬅️ Attach selected date
 
-        fetch("https://backend-afc4.onrender.com/upload", {
+        fetch("https://your-backend-name.onrender.com/upload", {
             method: "POST",
             body: formData,
         })
@@ -174,6 +176,7 @@ function uploadImages() {
                     gallery.appendChild(img);
                 } else {
                     alert("Upload failed: " + data.message);
+                    uploadSuccessful = false;
                 }
 
                 if (uploadCount === files.length) {
@@ -186,7 +189,7 @@ function uploadImages() {
             });
     
     }
-    if(true){
+    if(uploadSuccessful){
         // Optional: Dynamically create a box (if you're not selecting from existing)
                 const container = document.getElementById("container");
 
@@ -241,4 +244,3 @@ function loadImages(boxId) {
         })
         .catch(console.error);
 }
-
