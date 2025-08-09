@@ -150,7 +150,7 @@ function giveBoxId() {
 function showImages(boxId) {
     selectedBoxId = boxId;
     console.log("Entered showImages");
-    document.getElementById("gallery").style.display = "none";
+    document.getElementById("container").style.display = "none";
     document.getElementById("gallery").style.display = "flex";
     document.getElementById("gallery").style.color = "blue";
     loadImages(boxId);
@@ -282,6 +282,7 @@ document.getElementById('backToBoxes').onclick = () => {
     const container = document.getElementById('container');
     if (container) container.style.display = 'flex'; // or block, depending on your layout
 };
+
 
 
 
