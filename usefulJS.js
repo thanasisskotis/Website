@@ -1,19 +1,53 @@
-let boxCounter = 1;  // To assign unique IDs to new boxes
+let boxCounter = 1;  // To assign unique IDs to new boxes (might not be needed with backend IDs)
 let selectedBoxId = boxCounter; // Which box is active (to upload/fetch images)
 let dragged = false;
 var disallowDrag = false; 
 let uploadSuccessful = false;
 const formContainer = document.querySelector('.form-container');
 
+window.onload = () => { loadBoxes(); };
+
+function loadBoxes() {
+    fetch(`https://backend-afc4.onrender.com/images/boxes`)
+        .then((res) => res.json())
+        .then((data) => {
+            if (!data.success || !Array.isArray(data.boxes)) {
+                alert("Failed to load boxes");
+                return;
+            }
+
+            // Sort boxes by date (most recent first)
+            data.boxes.sort((a, b) => new Date(a.date)) - new Date(b.date);``
+
+            data.boxes.forEach((box) => {
+                const newBox = document.createElement("div");
+                newBox.className = "box";
+                newBox.id = box.id; // Keep backend ID
+
+                // Display date instead of ID
+                const formattedDate = new Date(box.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+                newBox.textContent = formattedDate;
+
+                newBox.onclick = () => showImages(box.id);
+                container.appendChild(newBox);
+            });
+        })
+        .catch((err) => {
+            console.error("❌ Failed to load boxes:", err);
+            alert("Upload error: " + err.message);
+        });
+}
 
 const container = document.getElementById('container');
 
 container.onmousedown = function(e) { 
     const formContainer = document.querySelector('.form-container');
-    if (formContainer){
-        if(disallowDrag == false) {
-            Drag(e.clientX);
-        }
+    if (formContainer && disallowDrag == false) {
+        Drag(e.clientX);
     }
 };
 
@@ -24,11 +58,11 @@ container.onmouseleave = function() {
 };
 
 const createBox = document.getElementById("createBox");
-createBox.onclick = preventClickIfDragged( () => { 
+createBox.onclick = preventClickIfDragged(() => { 
     giveBoxId(); 
 });
 
-function preventClickIfDragged( callback) {
+function preventClickIfDragged(callback) {
     return function(e) {
         if (dragged) {
             e.preventDefault();
@@ -41,11 +75,7 @@ function preventClickIfDragged( callback) {
     };
 }
 
-
-
-
 function giveBoxId() {
-
     if (formContainer) {
         formContainer.style.display = 'flex';
         formContainer.style.justifyContent = 'center';
@@ -89,7 +119,6 @@ function giveBoxId() {
         button.style.cursor = 'pointer';
         button.style.transition = 'background-color 0.3s ease';
 
-
         button.onmouseenter = function() {  
             button.style.backgroundColor = '#d18c00';
         };
@@ -106,124 +135,102 @@ function giveBoxId() {
         if (pageContent) {
             pageContent.style.filter = 'blur(1.5px)';
         }
-        
     }
-
 }
-
-
-
 
 // Show images for a given box and remember which box is selected
 function showImages(boxId) {
     selectedBoxId = boxId;
     loadImages(boxId);
-    // Show overlay or gallery
     document.getElementById("gallery").style.display = "flex";
 }
 
-// Hide overlay (optional for your design)
 function hideOverlay() {
     document.getElementById("imageOverlay").style.display = "none";
     document.getElementById("gallery").style.display = "none";
 }
 
-// Upload images from input to the selected box
 function uploadImages() {
-
     uploadSuccessful = true;
     disallowDrag = false;
     const files = document.getElementById("fileInput").files;
     const dateInput = document.getElementById("dateInput").value;
 
-    /*if (!selectedBoxId) {
-        alert("Please select or create a box first.");
-        return;
-    }*/
-
     if (!dateInput) {
         alert("Please select a date.");
         return;
     }
-
     if (files.length === 0) {
         alert("Please select image files to upload.");
         return;
     }
 
     const gallery = document.getElementById("gallery");
-
     let uploadCount = 0;
     
     for (let i = 0; i < files.length; i++) {
         const formData = new FormData();
         formData.append("image", files[i]);
-        formData.append("boxId", selectedBoxId);
-        formData.append("date", dateInput);  // ⬅️ Attach selected date
+        formData.append("date", dateInput);
 
         fetch("https://backend-afc4.onrender.com/upload", {
             method: "POST",
             body: formData,
         })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.success) {
-                    uploadCount++;
-                    const img = document.createElement("img");
-                    img.src = data.url;
-                    img.style.width = "150px";
-                    img.style.margin = "5px";
-                    gallery.appendChild(img);
-                } else {
-                    alert("Upload failed: " + data.message);
-                    uploadSuccessful = false;
-                }
+        .then((res) => res.json())
+        .then((data) => {
+            if (data.success) {
+                uploadCount++;
+                const img = document.createElement("img");
+                img.src = data.url;
+                img.style.width = "150px";
+                img.style.margin = "5px";
+                gallery.appendChild(img);
+            } else {
+                alert("Upload failed: " + data.message);
+                uploadSuccessful = false;
+            }
 
-                if (uploadCount === files.length) {
-                    alert("All images uploaded!");
-                }
-
-            })
-            .catch((err) => {
-                console.error("❌ Upload error:", err);
-                alert("Upload failed. Check the console for details.");
-            });
-
-    
+            if (uploadCount === files.length) {
+                alert("All images uploaded!");
+            }
+        })
+        .catch((err) => {
+            console.error("❌ Upload error:", err);
+            alert("Upload failed. Check the console for details.");
+        });
     }
-    if(uploadSuccessful){
-        // Optional: Dynamically create a box (if you're not selecting from existing)
-                const container = document.getElementById("container");
 
-                const newBox = document.createElement("div");
-                newBox.className = "box";
-                newBox.id = `box${boxCounter}`;
-                newBox.textContent = `Box ${boxCounter}`;
-                newBox.onclick = () => showImages(newBox.id);
+    if (uploadSuccessful) {
+        const container = document.getElementById("container");
+        const newBox = document.createElement("div");
+        newBox.className = "box";
+        newBox.id = `box${boxCounter}`;
 
-                if (boxCounter <= 1) {
-                // If 0 or 1 child, insert at the start (before first child)
-                container.insertBefore(newBox, container.firstChild);
-                } else {
-                // Insert before the last child (second to last position)
-                container.insertBefore(newBox, container.children[boxCounter - 1]);
-                }
-                boxCounter++;
+        // Show date instead of box ID
+        const formattedDate = new Date(dateInput).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+        newBox.textContent = formattedDate;
 
-                const formContainer = document.querySelector('.form-container');
-                if (formContainer) {
-                    formContainer.style.display= "none";
-                }
+        newBox.onclick = () => showImages(newBox.id);
 
-                const pageContent = document.querySelector('.page-content');
-                if (pageContent) {
-                    pageContent.style.filter = 'none';
-                }
+        // Insert at start for newest first
+        container.insertBefore(newBox, container.firstChild);
+        boxCounter++;
+
+        if (formContainer) {
+            formContainer.style.display = "none";
+        }
+        const pageContent = document.querySelector('.page-content');
+        if (pageContent) {
+            pageContent.style.filter = 'none';
+        }
     }
 }
 
-
-// Fetch and show images for a given box id
 function loadImages(boxId) {
     fetch(`https://backend-afc4.onrender.com/images/${boxId}`)
         .then((res) => res.json())
@@ -251,8 +258,3 @@ function loadImages(boxId) {
             alert("Upload error: " + err.message);
         });
 }
-
-
-
-
-
