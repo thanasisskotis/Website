@@ -17,7 +17,7 @@ function loadBoxes() {
             }
 
             // Sort boxes by date (most recent first)
-            data.boxes.sort((a, b) => new Date(a.date)) - new Date(b.date);
+            data.boxes.sort((a, b) => new Date(a.date) - new Date(b.date));
 
             data.boxes.forEach((box) => {
                 const newBox = document.createElement("div");
@@ -258,4 +258,5 @@ function loadImages(boxId) {
             alert("Upload error: " + err.message);
         });
 }
+
 
