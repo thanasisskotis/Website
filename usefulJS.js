@@ -11,22 +11,25 @@ function loadBoxes() {
     fetch(`https://backend-afc4.onrender.com/boxes`)
         .then((res) => res.json())
         .then((data) => {
+            console.log("Boxes data received:", data);
             if (!data.success || !Array.isArray(data.boxes)) {
                 alert("Failed to load boxes");
                 return;
             }
 
             const container = document.getElementById('container');
+            if (!container) {
+                console.error("Container element not found");
+                return;
+            }
 
-            // Sort boxes by date (most recent first)
-            data.boxes.sort((a, b) => new Date(a.date) - new Date(b.date));
+            data.boxes.sort((a, b) => new Date(b.date) - new Date(a.date));
 
             data.boxes.forEach((box) => {
                 const newBox = document.createElement("div");
                 newBox.className = "box";
-                newBox.id = box.id; // Keep backend ID
+                newBox.id = box.id;
 
-                // Display date instead of ID
                 const formattedDate = new Date(box.date).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'short',
@@ -43,6 +46,7 @@ function loadBoxes() {
             alert("Upload error: " + err.message);
         });
 }
+
 
 const container = document.getElementById('container');
 
@@ -261,4 +265,3 @@ function loadImages(boxId) {
             alert("Upload error: " + err.message);
         });
 }
-
