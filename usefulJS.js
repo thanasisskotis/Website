@@ -39,7 +39,7 @@ function loadBoxes() {
 
                 newBox.onclick = () => showImages(box.id);
                 const firstBox = container.querySelector('.creatBox'); // or container.firstElementChild
-                container.insertBefore(newBox, firstBox);
+                container.insertBefore(firstBox, newBox);
 
             });
         })
@@ -267,3 +267,4 @@ function loadImages(boxId) {
             alert("Upload error: " + err.message);
         });
 }
+
