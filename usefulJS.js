@@ -16,6 +16,8 @@ function loadBoxes() {
                 return;
             }
 
+            const container = getElementById('container');
+
             // Sort boxes by date (most recent first)
             data.boxes.sort((a, b) => new Date(a.date) - new Date(b.date));
 
@@ -207,6 +209,7 @@ function uploadImages() {
         newBox.className = "box";
         newBox.id = `box${boxCounter}`;
 
+
         // Show date instead of box ID
         const formattedDate = new Date(dateInput).toLocaleDateString('en-US', {
             year: 'numeric',
@@ -258,5 +261,3 @@ function loadImages(boxId) {
             alert("Upload error: " + err.message);
         });
 }
-
-
