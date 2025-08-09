@@ -16,7 +16,7 @@ function loadBoxes() {
                 return;
             }
 
-            const container = getElementById('container');
+            const container = document.getElementById('container');
 
             // Sort boxes by date (most recent first)
             data.boxes.sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -261,3 +261,4 @@ function loadImages(boxId) {
             alert("Upload error: " + err.message);
         });
 }
+
