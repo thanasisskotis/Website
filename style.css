@@ -98,3 +98,9 @@ header {
 .form-container {
   display: none;
 }
+
+#exitBtn{
+  border: 1px solid black;
+  border-radius: 3vh;
+  background-color: grey;
+}
