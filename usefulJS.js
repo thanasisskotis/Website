@@ -273,4 +273,15 @@ function loadImages(boxId) {
 
 
 
+document.getElementById('backToBoxes').onclick = () => {
+    // Hide gallery
+    const gallery = document.getElementById('gallery');
+    if (gallery) gallery.style.display = 'none';
+
+    // Show boxes container
+    const container = document.getElementById('container');
+    if (container) container.style.display = 'flex'; // or block, depending on your layout
+};
+
+
 
