@@ -149,8 +149,10 @@ function giveBoxId() {
 // Show images for a given box and remember which box is selected
 function showImages(boxId) {
     selectedBoxId = boxId;
-    loadImages(boxId);
+    console.log("Entered showImages");
     document.getElementById("gallery").style.display = "flex";
+    document.getElementById("gallery").style.color = "blue";
+    loadImages(boxId);
 }
 
 function hideOverlay() {
@@ -267,5 +269,6 @@ function loadImages(boxId) {
             alert("Upload error: " + err.message);
         });
 }
+
 
 
