@@ -49,6 +49,29 @@ header {
   transform: translateX(0);
 }
 
+
+.createBox {
+  position: relative;
+  border: 1px solid black;
+  width: 18.5vw;
+  background-color: #fff8dc;
+  border-radius: 1.5vh;
+  height: 60vh;
+  margin-bottom: 2vh;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0s ease, box-shadow 0.2s ease;
+  transform: translateX(0);
+}
+
+.createBox:hover {
+  transform: scale(1.05);
+  box-shadow: 0 1vh 1.75vh rgb(12, 12, 12);
+}
+
 .box:hover {
   transform: scale(1.05);
   box-shadow: 0 1vh 1.75vh rgb(12, 12, 12);
