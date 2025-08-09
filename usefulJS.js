@@ -8,7 +8,7 @@ const formContainer = document.querySelector('.form-container');
 window.onload = () => { loadBoxes(); };
 
 function loadBoxes() {
-    fetch(`https://backend-afc4.onrender.com/images/boxes`)
+    fetch(`https://backend-afc4.onrender.com/boxes`)
         .then((res) => res.json())
         .then((data) => {
             if (!data.success || !Array.isArray(data.boxes)) {
