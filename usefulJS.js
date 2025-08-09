@@ -258,9 +258,9 @@ function loadImages(boxId) {
             data.images.forEach((img) => {
                 const imageElem = document.createElement("img");
                 imageElem.src = img.url;
-                imageElem.style.height = "75vh";
-                imageElem.style.width = "45vh";
-                imageElem.style.margin = "10vw";
+                imageElem.style.height = "70vh";
+                imageElem.style.width = "50vh";
+                imageElem.style.margin = "0 10vw 10vw 0";
                 gallery.appendChild(imageElem);
             });
 
@@ -283,6 +283,7 @@ document.getElementById('backToBoxes').onclick = () => {
     const container = document.getElementById('container');
     if (container) container.style.display = 'flex'; // or block, depending on your layout
 };
+
 
 
 
