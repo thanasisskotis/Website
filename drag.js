@@ -7,6 +7,7 @@ let currentOffset = 0;
 
 function Drag(X) {
     const boxes = document.querySelectorAll('.box');
+    const createBox = document.getElementById("createBox");
     isDragging = true;
     dragged = false;
     x1 = X;
@@ -24,6 +25,7 @@ function Drag(X) {
         boxes.forEach(box => {
             box.style.transform = `translateX(${currentOffset}px)`;
         });
+        createBox.style.tranform = `translateX(${currentOffset}px)`;
             
         // Velocity calc using *frame delta*
         const t2 = performance.now();
@@ -56,6 +58,7 @@ function endDrag() {
 
 function animateVelocity(v) {
     const boxes = document.querySelectorAll('.box');
+    const createBox = document.getElementById("createBox");
 
     function step() {
         if (Math.abs(v) < 0.1) return;
@@ -65,6 +68,8 @@ function animateVelocity(v) {
         boxes.forEach(box => {
             box.style.transform = `translateX(${currentOffset}px)`;
         });
+        
+        createBox.style.transform = `translateX(${currentOffset}px)`;
 
         v *= 0.93; // Friction
         requestAnimationFrame(step);
