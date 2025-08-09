@@ -150,6 +150,7 @@ function giveBoxId() {
 function showImages(boxId) {
     selectedBoxId = boxId;
     console.log("Entered showImages");
+    document.getElementById("gallery").style.display = "none";
     document.getElementById("gallery").style.display = "flex";
     document.getElementById("gallery").style.color = "blue";
     loadImages(boxId);
@@ -269,6 +270,7 @@ function loadImages(boxId) {
             alert("Upload error: " + err.message);
         });
 }
+
 
 
 
