@@ -38,7 +38,9 @@ function loadBoxes() {
                 newBox.textContent = formattedDate;
 
                 newBox.onclick = () => showImages(box.id);
-                container.appendChild(newBox);
+                const firstBox = container.querySelector('.creatBox'); // or container.firstElementChild
+                container.insertBefore(newBox, firstBox);
+
             });
         })
         .catch((err) => {
