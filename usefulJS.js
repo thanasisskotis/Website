@@ -151,14 +151,14 @@ function showImages(boxId) {
     selectedBoxId = boxId;
     console.log("Entered showImages");
     document.getElementById("container").style.display = "none";
-    document.getElementById("gallery").style.display = "flex";
+    document.getElementById("imageLayout").style.display = "flex";
     document.getElementById("gallery").style.color = "blue";
     loadImages(boxId);
 }
 
 function hideOverlay() {
     document.getElementById("imageOverlay").style.display = "none";
-    document.getElementById("gallery").style.display = "none";
+    document.getElementById("imageLayout").style.display = "none";
 }
 
 function uploadImages() {
