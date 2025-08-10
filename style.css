@@ -92,8 +92,8 @@ header {
   margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 3vw;
+  justify-content: start;
+  padding: 4rem;
 }
 
 .form-container {
