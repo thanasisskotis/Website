@@ -107,8 +107,11 @@ header {
 }
 
 #exitBtn{
+  height: 10vh;
+  width: 5vw;
   border: 1px solid black;
-  border-radius: 3vh;
+  border-radius: 4vh;
   background-color: grey;
 }
+
 
