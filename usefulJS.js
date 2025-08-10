@@ -37,9 +37,9 @@ function loadBoxes() {
                 });
                 newBox.textContent = formattedDate;
 
-                newBox.onclick = preventClickIfDragged(() => {
-                    showImages(newBox.id)
-                })
+                newBox.onclick = preventClickIfDragged((e, element) => {
+                    showImages(element.id);
+                });
                 const firstBox = container.querySelector('.createBox'); // or container.firstElementChild
                 container.insertBefore(newBox, firstBox);
 
@@ -68,8 +68,8 @@ container.onmouseleave = function() {
 };
 
 const createBox = document.getElementById("createBox");
-createBox.onclick = preventClickIfDragged(() => { 
-    giveBoxId(); 
+createBox.onclick = preventClickIfDragged((e, element) => {
+    giveBoxId();
 });
 
 
@@ -81,10 +81,11 @@ function preventClickIfDragged(callback) {
             dragged = false;
             return;
         }
-        callback();
+        callback(e, e.currentTarget);
         dragged = false;
     };
 }
+
 
 function giveBoxId() {
     if (formContainer) {
