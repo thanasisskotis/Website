@@ -17,6 +17,7 @@ function Drag(X) {
         if (!isDragging) return;
 
         const createBox = document.getElementById("createBox");
+        if(!createBox) console.log("fck")
 
         x2 = e.clientX;
         const dx = x2 - x1; // from start point
