@@ -100,7 +100,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
-  padding: 4rem;
+  padding: 2rem 4rem 2rem 4rem;
 }
 
 .form-container {
