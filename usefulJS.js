@@ -36,11 +36,9 @@ function loadBoxes() {
                     day: 'numeric'
                 });
                 newBox.textContent = formattedDate;
-                console.log(newBox);
 
-                newBox.onclick = preventClickIfDragged((newBox) => {
-                    console.log(newBox);
-                    showImages(newBox.id);
+                newBox.onclick = preventClickIfDragged(() => {
+                    showImages(newBox.id)
                 })
                 const firstBox = container.querySelector('.createBox'); // or container.firstElementChild
                 container.insertBefore(newBox, firstBox);
