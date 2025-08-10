@@ -27,7 +27,7 @@ function Drag(X) {
         boxes.forEach(box => {
             box.style.transform = `translateX(${currentOffset}px)`;
         });
-        createBox.style.tranform = `translateX(${currentOffset}px)`;
+        createBox.style.transform = `translateX(${currentOffset}px)`;
             
         // Velocity calc using *frame delta*
         const t2 = performance.now();
