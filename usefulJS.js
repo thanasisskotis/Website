@@ -7,6 +7,13 @@ const formContainer = document.querySelector('.form-container');
 
 window.onload = () => { loadBoxes(); };
 
+const exitBtn = getElementById("exitBtn");
+exitBtn.onclick = function() {
+    document.getElementById("container").style.display = "flex";
+    document.getElementById("imageLayout").style.display = "none";
+
+}
+
 function loadBoxes() {
     fetch(`https://backend-afc4.onrender.com/boxes`)
         .then((res) => res.json())
