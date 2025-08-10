@@ -37,7 +37,9 @@ function loadBoxes() {
                 });
                 newBox.textContent = formattedDate;
 
-                newBox.onclick = () => showImages(box.id);
+                newBox.onclick = preventClickIfDragged(() => {
+                    showImages(newBox.id)
+                })
                 const firstBox = container.querySelector('.creatBox'); // or container.firstElementChild
                 container.insertBefore(newBox, firstBox);
 
@@ -69,6 +71,7 @@ const createBox = document.getElementById("createBox");
 createBox.onclick = preventClickIfDragged(() => { 
     giveBoxId(); 
 });
+
 
 function preventClickIfDragged(callback) {
     return function(e) {

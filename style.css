@@ -109,10 +109,11 @@ header {
 
 #exitBtn{
   height: 10vh;
-  width: 5vw;
+  width: 7.5vw;
   border: 1px solid black;
   border-radius: 4vh;
   background-color: grey;
+  font-size: large;
 }
 
 
