@@ -36,11 +36,13 @@ function loadBoxes() {
                     day: 'numeric'
                 });
                 newBox.textContent = formattedDate;
+                console.log(newBox);
 
                 newBox.onclick = preventClickIfDragged((newBox) => {
-                    showImages(newBox.id)
+                    console.log(newBox);
+                    showImages(newBox.id);
                 })
-                const firstBox = container.querySelector('.creatBox'); // or container.firstElementChild
+                const firstBox = container.querySelector('.createBox'); // or container.firstElementChild
                 container.insertBefore(newBox, firstBox);
 
             });
