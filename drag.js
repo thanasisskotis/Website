@@ -7,7 +7,6 @@ let currentOffset = 0;
 
 function Drag(X) {
     const boxes = document.querySelectorAll('.box');
-    const createBox = document.getElementById("createBox");
     isDragging = true;
     dragged = false;
     x1 = X;
@@ -16,6 +15,8 @@ function Drag(X) {
 
     container.onmousemove = (e) => {
         if (!isDragging) return;
+
+        const createBox = document.getElementById("createBox");
 
         x2 = e.clientX;
         const dx = x2 - x1; // from start point
