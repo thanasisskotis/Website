@@ -93,6 +93,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  gap: 3vw;
 }
 
 .form-container {
