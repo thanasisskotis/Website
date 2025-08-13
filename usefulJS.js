@@ -7,7 +7,7 @@ const formContainer = document.querySelector('.form-container');
 
 window.onload = () => { loadBoxes(); };
 
-const exitBtn = getElementById("exitBtn");
+const exitBtn = document.getElementById("exitBtn");
 exitBtn.onclick = function() {
     const container = document.getElementById("container");
     container.style.display = "flex";
