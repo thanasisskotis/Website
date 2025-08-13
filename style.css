@@ -92,7 +92,6 @@ header {
   display: none;
   justify-content: center;
   align-items: center;
-  background-color: blue;
 }
 
 #gallery {
@@ -109,11 +108,18 @@ header {
 
 #exitBtn{
   height: 10vh;
-  width: 7.5vw;
+  width: 10vh;
   border: 1px solid black;
-  border-radius: 4vh;
+  border-radius: 5vh;
   background-color: grey;
   font-size: large;
+  cursor: pointer;
+  transition: transform 0s ease, box-shadow 0.2s ease;
+}
+
+#exitBtn:hover{
+  background-color: rgb(106, 106, 106);
+  box-shadow: 1vh 1vh 1.5vh rgb(67, 66, 66);
 }
 
 
