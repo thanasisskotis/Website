@@ -9,8 +9,10 @@ window.onload = () => { loadBoxes(); };
 
 const exitBtn = getElementById("exitBtn");
 exitBtn.onclick = function() {
-    document.getElementById("container").style.display = "flex";
-    document.getElementById("imageLayout").style.display = "none";
+    const container = document.getElementById("container");
+    container.style.display = "flex";
+    const layout = document.getElementById("imageLayout")
+    layout.style.display = "none";
 
 }
 
