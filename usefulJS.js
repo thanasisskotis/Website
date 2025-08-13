@@ -11,9 +11,12 @@ const exitBtn = document.getElementById("exitBtn");
 exitBtn.onclick = function() {
     const container = document.getElementById("container");
     container.style.display = "flex";
+    
     const layout = document.getElementById("imageLayout")
     layout.style.display = "none";
 
+    const gallery = document.getElementById("gallery");
+    gallery.style.display = "none";
 }
 
 function loadBoxes() {
@@ -274,6 +277,14 @@ function loadImages(boxId) {
                 imageElem.style.width = "50vh";
                 imageElem.style.margin = "0 10vw 10vw 0";
                 gallery.appendChild(imageElem);
+                imageElem.onclick = function(){
+                    imageElem.style.maxWidth= "90vw";  /* never exceed 90% of screen width */
+                    imageElem.style.maxHeight= "90vh"; /* never exceed 90% of screen height */
+                    imageElem.style.width= "auto";      /* scale proportionally */
+                    imageElem.style.height= "auto";
+                    imageElem.style.borderRadius= "1rem";
+                    
+                }
             });
 
             console.log(`📥 Loaded ${data.images.length} images for box ${boxId}`);
