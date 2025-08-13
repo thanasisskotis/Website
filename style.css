@@ -111,15 +111,15 @@ header {
   width: 15vh;
   border: 1px solid black;
   border-radius: 5vh;
-  background-color: #fbf0d3;
+  background-color: rgb(251, 238, 204);
   font-size: large;
   cursor: pointer;
   transition: transform 0s ease, box-shadow 0.2s ease;
 }
 
 #exitBtn:hover{
-  background-color: #fcefcb;
-  box-shadow: 1vh 1vh 1.5vh rgb(112, 107, 91);;
+  background-color: rgb(253, 237, 197);
+  box-shadow: 1vh 1vh 1.5vh rgb(79, 76, 63);;
 }
 
 
