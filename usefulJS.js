@@ -280,7 +280,7 @@ function loadImages(boxId) {
                     imageElem.style.height = "70vh";
                     imageElem.style.width = "50vh";
                 }
-                imageElem.style.margin = "0 10vw 10vw 0";
+                imageElem.style.margin = "0 5vw 10vw 0";
                 gallery.appendChild(imageElem);
                 imageElem.onclick = function(){
                     imageElem.style.maxWidth= "90vw";  /* never exceed 90% of screen width */
