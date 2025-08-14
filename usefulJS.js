@@ -290,13 +290,12 @@ function loadImages(boxId) {
                     imageElem.style.height= "auto";
                     imageElem.style.borderRadius= "1rem";
                     const gallery = document.getElementById("gallery");
-                    gallery.style.justifyContent = "center";
-                    gallery.style.alignItems = "center";
                     gallery.childNodes.forEach((child) =>{
                         if(child != imageElem) 
                         child.style.display = "none";
                     });
-                    
+                    gallery.style.justifyContent = "center";
+                    gallery.style.alignItems = "center";
 
                 }
             });
