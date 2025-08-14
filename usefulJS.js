@@ -168,7 +168,7 @@ function showImages(boxId) {
     console.log("Entered showImages");
     document.getElementById("container").style.display = "none";
     document.getElementById("imageLayout").style.display = "flex";
-    codument,getElementById("gallery").style.display = "flex";
+    document.getElementById("gallery").style.display = "flex";
     loadImages(boxId);
 }
 
