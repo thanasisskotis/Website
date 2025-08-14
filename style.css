@@ -101,8 +101,7 @@ header {
   justify-content: start;
   flex: row;
   padding: 2rem 1rem 2rem 1rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  gap: 1rem;
 }
 
 .form-container {
