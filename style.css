@@ -100,7 +100,9 @@ header {
   flex-wrap: wrap;
   justify-content: start;
   flex: row;
-  padding: 2rem 2rem 2rem 2rem;
+  padding: 2rem 1rem 2rem 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .form-container {
