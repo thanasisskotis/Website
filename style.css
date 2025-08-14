@@ -99,7 +99,8 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
-  padding: 2rem 4rem 2rem 4rem;
+  flex: row;
+  padding: 2rem 2rem 2rem 2rem;
 }
 
 .form-container {
