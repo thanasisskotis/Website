@@ -293,6 +293,7 @@ function loadImages(boxId) {
                     gallery.style.justifyContent = "center";
                     gallery.style.alignItems = "center";
                     gallery.childNodes.forEach((child) =>{
+                        if(child != imageElem) 
                         child.style.display = "none";
                     });
                     
