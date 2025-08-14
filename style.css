@@ -35,7 +35,7 @@ header {
 .box {
   position: relative;
   border: 1px solid black;
-  width: 18.5vw;
+  width: 20vh;
   background-color: #fff8dc;
   border-radius: 1.5vh;
   height: 60vh;
@@ -53,7 +53,7 @@ header {
 .createBox {
   position: relative;
   border: 1px solid black;
-  width: 18.5vw;
+  width: 20vh;
   background-color: #fff8dc;
   border-radius: 1.5vh;
   height: 60vh;
