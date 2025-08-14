@@ -274,8 +274,8 @@ function loadImages(boxId) {
                 const imageElem = document.createElement("img");
                 imageElem.src = img.url;
                 if (window.matchMedia("(max-width: 768px)").matches) {
-                    imageElem.style.height = "30vh";
-                    imageElem.style.width = "15vh";
+                    imageElem.style.height = "25vh";
+                    imageElem.style.width = "17.5vh";
                 } else {
                     imageElem.style.height = "70vh";
                     imageElem.style.width = "50vh";
