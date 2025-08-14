@@ -35,7 +35,7 @@ header {
 .box {
   position: relative;
   border: 1px solid black;
-  width: 20vh;
+  width: 25vh;
   background-color: #fff8dc;
   border-radius: 1.5vh;
   height: 60vh;
@@ -53,7 +53,7 @@ header {
 .createBox {
   position: relative;
   border: 1px solid black;
-  width: 20vh;
+  width: 25vh;
   background-color: #fff8dc;
   border-radius: 1.5vh;
   height: 60vh;
@@ -99,10 +99,14 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
-  flex: row;
-  padding: 2rem 2rem;
-  gap: 5vw;
+  flex-direction: row;
+  gap: 2vw;
 }
+
+#gallery img{
+  padding: 0;
+}
+
 
 .form-container {
   display: none;
