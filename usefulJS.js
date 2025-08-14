@@ -168,6 +168,7 @@ function showImages(boxId) {
     console.log("Entered showImages");
     document.getElementById("container").style.display = "none";
     document.getElementById("imageLayout").style.display = "flex";
+    codument,getElementById("gallery").style.display = "flex";
     loadImages(boxId);
 }
 
@@ -273,8 +274,13 @@ function loadImages(boxId) {
             data.images.forEach((img) => {
                 const imageElem = document.createElement("img");
                 imageElem.src = img.url;
-                imageElem.style.height = "70vh";
-                imageElem.style.width = "50vh";
+                if (window.matchMedia("(max-width: 768px)").matches) {
+                    imageElem.style.height = "30vh";
+                    imageElem.style.width = "15vh";
+                } else {
+                    imageElem.style.height = "70vh";
+                    imageElem.style.width = "50vh";
+                }
                 imageElem.style.margin = "0 10vw 10vw 0";
                 gallery.appendChild(imageElem);
                 imageElem.onclick = function(){
@@ -283,7 +289,14 @@ function loadImages(boxId) {
                     imageElem.style.width= "auto";      /* scale proportionally */
                     imageElem.style.height= "auto";
                     imageElem.style.borderRadius= "1rem";
+                    const gallery = document.getElementById("gallery");
+                    gallery.style.justifyContent = "center";
+                    gallery.style.alignItems = "center";
+                    gallery.childNodes.forEach((child) =>{
+                        child.style.display = "none";
+                    });
                     
+
                 }
             });
 
