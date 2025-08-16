@@ -134,6 +134,7 @@ header {
 
 #gallery img{
   padding: 0;
+  cursor: pointer;
 }
 
 
