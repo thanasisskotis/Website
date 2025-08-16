@@ -59,15 +59,15 @@ function loadBoxes() {
 
                 fetch(`https://backend-afc4.onrender.com/images/${newBox.id}`)
                 .then((res) => res.json())
-                .then((data) => {
-                    if (!data.success || !Array.isArray(data.images)) {
+                .then((data2) => {
+                    if (!data2.success || !Array.isArray(data2.images)) {
                         alert("Failed to load images");
                         return;
                     }
 
 
                     const imageElem = document.createElement("img");
-                    imageElem.src = data.images[0].url;
+                    imageElem.src = data2.images[0].url;
                     imageElem.style.height = "100%";
                     imageElem.style.width = "100%";
                     imageElem.style.objectFit = "cover";
@@ -78,9 +78,9 @@ function loadBoxes() {
 
                     console.log(`📥 Loaded images for box ${newBox.id}`);
                 })
-                .catch((err) => {
-                    console.error("❌ Failed to load images:", err);
-                    alert("Upload error: " + err.message);
+                .catch((err2) => {
+                    console.error("❌ Failed to load images:", err2);
+                    alert("Upload error: " + err2.message);
                 });
 
 
