@@ -169,13 +169,13 @@ header {
 @media (max-width: 768px) {
 
   .box{
-    height: 30vh;
+    height: 45vh;
     width: 20vh;
   }
 
 
   .createBox{
-    height: 30vh;
+    height: 45vh;
     width: 20vh;
   }
 
