@@ -339,6 +339,22 @@ function loadImages(boxId) {
                     });
                     gallery.style.justifyContent = "center";
                     gallery.style.alignItems = "center";
+                    const button = document.getElementById("exitBtn");
+                    button.style.display = "none";
+
+                    const restoreImages = (event) => {
+                        if (!imageElem.contains(event.target)) {
+                            gallery.childNodes.forEach((child) => {
+                                child.style.display = "block";
+                            });
+                            gallery.style.justifyContent = "start";
+                            gallery.style.alignItems = "flex-start";
+                            document.removeEventListener("click", restoreImages);
+                            button.style.display = "block";
+                        }
+                    };
+                    document.addEventListener("click", restoreImages);
+
 
                 }
             });
