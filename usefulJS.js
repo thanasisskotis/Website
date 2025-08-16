@@ -38,6 +38,7 @@ function loadBoxes() {
             data.boxes.sort((a, b) => new Date(b.date) - new Date(a.date));
 
             data.boxes.forEach((box) => {
+
                 const newBox = document.createElement("div");
                 newBox.className = "box";
                 newBox.id = box.id;
@@ -55,7 +56,34 @@ function loadBoxes() {
                 const firstBox = container.querySelector('.createBox'); // or container.firstElementChild
                 container.insertBefore(newBox, firstBox);
 
-            });
+
+                fetch(`https://backend-afc4.onrender.com/images/${boxId}`)
+                .then((res) => res.json())
+                .then((data) => {
+                    if (!data.success || !Array.isArray(data.images)) {
+                        alert("Failed to load images");
+                        return;
+                    }
+
+
+                    const imageElem = document.createElement("img");
+                    imageElem.src = data.images[0].url;
+                    imageElem.style.height = "100%";
+                    imageElem.style.width = "100%";
+                    imageElem.style.objectFit = "cover";
+                    const box = document.getElementById(newBox.id);
+                    box.appendChild(imageElem);
+    
+                });
+
+                    console.log(`📥 Loaded ${data.images.length} images for box ${boxId}`);
+                })
+                .catch((err) => {
+                    console.error("❌ Failed to load images:", err);
+                    alert("Upload error: " + err.message);
+                });
+
+
         })
         .catch((err) => {
             console.error("❌ Failed to load boxes:", err);
@@ -269,14 +297,6 @@ function loadImages(boxId) {
 
             const gallery = document.getElementById("gallery");
             gallery.innerHTML = "";
-
-            const boxImage = document.createElement("img");
-            boxImage.src = data.images[0].url;
-            boxImage.style.height = "100%";
-            boxImage.style.width = "100%";
-            boxImage.style.objectFit = "cover";
-            const box = document.getElementById("${boxId}");
-            box.appendChild(boxImage);
 
             data.images.forEach((img) => {
                 const imageElem = document.createElement("img");
