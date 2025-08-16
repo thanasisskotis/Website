@@ -127,7 +127,7 @@ header {
   margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: space-between;
   flex-direction: row;
   padding: 2rem 2rem;
 }
