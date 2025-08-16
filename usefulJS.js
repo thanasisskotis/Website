@@ -58,7 +58,7 @@ function loadBoxes() {
 
 
                 fetch(`https://backend-afc4.onrender.com/images/${newBox.id}`)
-                .then((res) => res.json())
+                .then((res2) => res2.json())
                 .then((data2) => {
                     if (!data2.success || !Array.isArray(data2.images)) {
                         alert("Failed to load images");
