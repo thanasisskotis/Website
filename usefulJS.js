@@ -76,7 +76,7 @@ function loadBoxes() {
     
                 });
 
-                    console.log(`📥 Loaded ${data.images.length} images for box ${boxId}`);
+                    console.log(`📥 Loaded ${data.images.length} images for box ${newBox.id}`);
                 })
                 .catch((err) => {
                     console.error("❌ Failed to load images:", err);
