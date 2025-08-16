@@ -275,6 +275,8 @@ function loadImages(boxId) {
             boxImage.style.height = "100%";
             boxImage.style.width = "100%";
             boxImage.style.objectFit = "cover";
+            const box = document.getElementById("${boxId}");
+            box.appendChild(boxImage);
 
             data.images.forEach((img) => {
                 const imageElem = document.createElement("img");
