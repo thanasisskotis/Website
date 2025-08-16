@@ -1,132 +1,139 @@
-body, html {
+/* 🌸 General Page Style */
+body {
+  background: linear-gradient(135deg, #ffe6f0, #ffd6e8);
+  font-family: 'Poppins', cursive, sans-serif;
+  color: #4a2c2a;
   margin: 0;
   padding: 0;
-  background-color: #fdf6e3;
-  /* ❌ Remove overflow-x: hidden to avoid cutting flex scrolling */
-  /* overflow-x: hidden; --> removed */
-}
-
-header {
-  font-family: "Blippo", "Jokerman", fantasy, sans-serif;
-  font-size: large;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.flexbox {
+  min-height: 100vh;
   display: flex;
-  max-width: 100%;
-  background-color: white;
-  justify-content: start;
-  overflow-x: auto;
-  padding: 4rem;
-  padding-right: 6rem; /* ✅ Extra space after last item */
-  gap: 3vw;
-  box-sizing: border-box;
-
-  /* ✅ Hide scrollbar across browsers */
-  scrollbar-width: none;          /* Firefox */
-  -ms-overflow-style: none;       /* IE/Edge */
-}
-.flexbox::-webkit-scrollbar {
-  display: none;                  /* Chrome/Safari */
+  flex-direction: column;
+  align-items: center;
 }
 
+/* 🌹 Container for boxes */
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 2rem;
+  justify-content: center;
+}
+
+/* 💌 Box Style (each date box) */
 .box {
-  position: relative;
-  border: 1px solid black;
-  width: 25vh;
-  background-color: #fff8dc;
-  border-radius: 1.5vh;
-  height: 60vh;
-  margin-bottom: 2vh;
-  display: flex;
-  flex-shrink: 0;
-  justify-content: center;
-  align-items: center;
+  width: 200px;
+  height: 150px;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(255, 105, 180, 0.3);
   cursor: pointer;
-  transition: transform 0s ease, box-shadow 0.2s ease;
-  transform: translateX(0);
-}
-
-
-.createBox {
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
   position: relative;
-  border: 1px solid black;
-  width: 25vh;
-  background-color: #fff8dc;
-  border-radius: 1.5vh;
-  height: 60vh;
-  margin-bottom: 2vh;
-  display: flex;
-  flex-shrink: 0;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: transform 0s ease, box-shadow 0.2s ease;
-  transform: translateX(0);
-}
-
-.createBox:hover {
-  transform: scale(1.05);
-  box-shadow: 0 1vh 1.75vh rgb(12, 12, 12);
+  background: #fff0f6;
 }
 
 .box:hover {
-  transform: scale(1.05);
-  box-shadow: 0 1vh 1.75vh rgb(12, 12, 12);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 14px 25px rgba(255, 105, 180, 0.45);
 }
 
-#imageOverlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background-color: rgba(0, 0, 0, 0.85);
-  display: none;
-  justify-content: center;
-  align-items: center;
+/* 💖 Date overlay inside box */
+.box div {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(255, 182, 193, 0.75);
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 0 0 1.2rem 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* 💕 Floating Hearts Animation */
+@keyframes float-hearts {
+  0% { transform: translateY(0) scale(0.8); opacity: 1; }
+  100% { transform: translateY(-80px) scale(1.2); opacity: 0; }
+}
+
+.box::after {
+  content: "❤";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 1.5rem;
+  color: rgba(255, 105, 180, 0.6);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.box:hover::after {
+  animation: float-hearts 1s ease forwards;
+}
+
+/* 🌷 Buttons */
+button {
+  background: #ff80ab;
+  border: none;
+  border-radius: 2rem;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.8rem 1.5rem;
   cursor: pointer;
+  box-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-#imageLayout{
-  display: none;
-  justify-content: center;
-  align-items: center;
+button:hover {
+  background: #ff4d94;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(255, 105, 180, 0.5);
 }
 
+/* 🌼 Upload form modal */
+#upload {
+  background: #fff0f6;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.35);
+  padding: 2rem;
+  border: 2px solid #ffb6c1;
+}
+
+#upload input, 
+#upload button {
+  border-radius: 0.5rem;
+  border: 1px solid #ffb6c1;
+  font-size: 1rem;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+/* 🌸 Gallery styling */
 #gallery {
-  margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
-  flex-direction: row;
-  padding: 2rem 2rem;
-  gap: 1vw;
+  gap: 1.5rem;
+  padding: 2rem;
+  justify-content: center;
 }
 
-#gallery img{
-  padding: 0;
+#gallery img {
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
-.form-container {
-  display: none;
+#gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(255, 105, 180, 0.4);
 }
 
-#exitBtn{
-  height: 7.5vh;
-  width: 11.25vh;
-  border: 1px solid black;
-  border-radius: 3.75vh;
-  background-color: rgb(251, 238, 204);
-  font-size: large;
-  cursor: pointer;
-  transition: transform 0s ease, box-shadow 0.2s ease;
+/* 🎀 Page content blur when modal is open */
+.page-content.blur {
+  filter: blur(2px);
 }
-
-#exitBtn:hover{
-  background-color: rgb(253, 237, 197);
-  box-shadow: 1vh 1vh 1.5vh rgb(79, 76, 63);;
-}
-
-
