@@ -168,6 +168,10 @@ header {
 
 @media (max-width: 768px) {
 
+  #flexbox{
+    padding: 2rem;
+  }
+
   .box{
     height: 45vh;
     width: 20vh;
@@ -176,7 +180,7 @@ header {
 
   .createBox{
     height: 45vh;
-    width: 20vh;
+    width: 22.5vh;
   }
 
 
