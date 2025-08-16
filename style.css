@@ -130,15 +130,19 @@ header {
   justify-content: start;
   flex-direction: row;
   padding: 2rem 2rem;
-  transition: transform 0s ease, box-shadow 0.2s ease;
-  transform: translateX(0);
 }
 
 #gallery img{
   padding: 0;
-  cursor: pointer;
+  cursor: pointer;  
+  transition: transform 0s ease, box-shadow 0.2s ease;
+  transform: translateX(0);
+}
+
+
+#gallery img:hover{
   transform: scale(1.05);
-  box-shadow: 0 0.75vh 1.25vh rgb(12, 12, 12);
+  box-shadow: 0 1vh 1.75vh rgb(12, 12, 12);
 }
 
 
