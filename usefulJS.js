@@ -270,6 +270,12 @@ function loadImages(boxId) {
             const gallery = document.getElementById("gallery");
             gallery.innerHTML = "";
 
+            const boxImage = document.createElement("img");
+            boxImage.src = data.images[0].url;
+            boxImage.style.height = "100%";
+            boxImage.style.width = "100%";
+            boxImage.style.objectFit = "cover";
+
             data.images.forEach((img) => {
                 const imageElem = document.createElement("img");
                 imageElem.src = img.url;
