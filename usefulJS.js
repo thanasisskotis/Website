@@ -255,7 +255,6 @@ function uploadImages() {
                 const img = document.createElement("img");
                 img.src = data.url;
                 img.style.width = "150px";
-                gallery.appendChild(img);
             } else {
                 alert("Upload failed: " + data.message);
                 uploadSuccessful = false;
