@@ -57,7 +57,7 @@ function loadBoxes() {
                 container.insertBefore(newBox, firstBox);
 
 
-                fetch(`https://backend-afc4.onrender.com/images/${boxId}`)
+                fetch(`https://backend-afc4.onrender.com/images/${newBox.id}`)
                 .then((res) => res.json())
                 .then((data) => {
                     if (!data.success || !Array.isArray(data.images)) {
