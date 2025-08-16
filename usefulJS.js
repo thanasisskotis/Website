@@ -351,6 +351,13 @@ function loadImages(boxId) {
                             gallery.style.alignItems = "flex-start";
                             document.removeEventListener("click", restoreImages);
                             button.style.display = "block";
+                            if (window.matchMedia("(max-width: 768px)").matches) {
+                                imageElem.style.height = "25vh";
+                                imageElem.style.width = "17.5vh";
+                            } else {
+                                imageElem.style.height = "70vh";
+                                imageElem.style.width = "50vh";
+                            }
                         }
                     };
                     document.addEventListener("click", restoreImages);
