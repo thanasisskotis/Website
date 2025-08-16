@@ -85,8 +85,8 @@ function loadBoxes() {
                         dateOverlay.style.bottom = "0";
                         dateOverlay.style.left = "0";
                         dateOverlay.style.width = "100%";
-                        dateOverlay.style.background = "rgba(0, 0, 0, 0.5)";
-                        dateOverlay.style.color = "white";
+                        dateOverlay.style.background = "#fff8dc";
+                        dateOverlay.style.color = "black";
                         dateOverlay.style.padding = "0.5rem";
                         dateOverlay.style.fontSize = "1rem";
                         dateOverlay.style.textAlign = "center";
