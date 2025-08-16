@@ -38,58 +38,74 @@ function loadBoxes() {
             data.boxes.sort((a, b) => new Date(b.date) - new Date(a.date));
 
             data.boxes.forEach((box) => {
-
                 const newBox = document.createElement("div");
                 newBox.className = "box";
                 newBox.id = box.id;
+                newBox.style.position = "relative"; // needed for date overlay
+                newBox.style.overflow = "hidden";
+                newBox.style.borderRadius = "1rem"; // keep rounded corners
 
-                const formattedDate = new Date(box.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric'
-                });
-                newBox.textContent = formattedDate;
-
+                // clickable
                 newBox.onclick = preventClickIfDragged((e, element) => {
                     showImages(element.id);
                 });
-                const firstBox = container.querySelector('.createBox'); // or container.firstElementChild
+
+                const firstBox = container.querySelector('.createBox');
                 container.insertBefore(newBox, firstBox);
 
-
+                // fetch images for this box
                 fetch(`https://backend-afc4.onrender.com/images/${newBox.id}`)
-                .then((res2) => res2.json())
-                .then((data2) => {
-                    if (!data2.success || !Array.isArray(data2.images)) {
-                        alert("Failed to load images");
-                        return;
-                    }
+                    .then((res2) => res2.json())
+                    .then((data2) => {
+                        if (!data2.success || !Array.isArray(data2.images)) {
+                            console.warn("No images for box", newBox.id);
+                            return;
+                        }
 
+                        if (data2.images.length > 0) {
+                            // cover image
+                            const imageElem = document.createElement("img");
+                            imageElem.src = data2.images[0].url;
+                            imageElem.style.height = "100%";
+                            imageElem.style.width = "100%";
+                            imageElem.style.objectFit = "cover";
+                            newBox.appendChild(imageElem);
+                        }
 
-                    const imageElem = document.createElement("img");
-                    imageElem.src = data2.images[0].url;
-                    imageElem.style.height = "100%";
-                    imageElem.style.width = "100%";
-                    imageElem.style.objectFit = "cover";
-                    const box = document.getElementById(newBox.id);
-                    box.appendChild(imageElem);
-    
-                });
+                        // date overlay
+                        const formattedDate = new Date(box.date).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric'
+                        });
 
-                    console.log(`📥 Loaded images for box ${newBox.id}`);
-                })
-                .catch((err2) => {
-                    console.error("❌ Failed to load images:", err2);
-                    alert("Upload error: " + err2.message);
-                });
+                        const dateOverlay = document.createElement("div");
+                        dateOverlay.textContent = formattedDate;
+                        dateOverlay.style.position = "absolute";
+                        dateOverlay.style.bottom = "0";
+                        dateOverlay.style.left = "0";
+                        dateOverlay.style.width = "100%";
+                        dateOverlay.style.background = "rgba(0, 0, 0, 0.5)";
+                        dateOverlay.style.color = "white";
+                        dateOverlay.style.padding = "0.5rem";
+                        dateOverlay.style.fontSize = "1rem";
+                        dateOverlay.style.textAlign = "center";
 
+                        newBox.appendChild(dateOverlay);
 
+                        console.log(`📥 Loaded images for box ${newBox.id}`);
+                    })
+                    .catch((err2) => {
+                        console.error("❌ Failed to load images:", err2);
+                    });
+            });
         })
         .catch((err) => {
             console.error("❌ Failed to load boxes:", err);
             alert("Upload error: " + err.message);
         });
 }
+
 
 
 const container = document.getElementById('container');
